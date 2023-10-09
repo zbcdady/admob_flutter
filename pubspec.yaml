@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  device_info_plus: any
 
 dev_dependencies:
   pedantic: 1.11.0

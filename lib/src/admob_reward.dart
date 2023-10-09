@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/services.dart';
 import 'admob_event_handler.dart';
 
 class AdmobReward extends AdmobEventHandler {
   static const MethodChannel _channel =
       MethodChannel('admob_flutter/reward');
+  DeviceInfoPlugin deviceIfo = DeviceInfoPlugin();
 
   late int id;
   late MethodChannel _adChannel;
@@ -37,6 +39,14 @@ class AdmobReward extends AdmobEventHandler {
       return 'ca-app-pub-3940256099942544/1712485313';
     } else {
       throw UnsupportedError('Unsupported platform');
+    }
+  }
+
+  Future get isTest async {
+    AndroidDeviceInfo androidInfo = await deviceIfo.androidInfo;
+    String model = androidInfo.model;
+    if(model == 'OnePlus8Pro' || model == 'GCE ×86 phone'){
+      return true;
     }
   }
 
