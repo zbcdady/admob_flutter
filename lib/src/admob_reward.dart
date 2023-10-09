@@ -45,7 +45,8 @@ class AdmobReward extends AdmobEventHandler {
   Future get isTest async {
     AndroidDeviceInfo androidInfo = await deviceIfo.androidInfo;
     String model = androidInfo.model;
-    if(model == 'OnePlus8Pro' || model == 'GCE ×86 phone'){
+    model = model.replaceAll(' ', '');
+    if(model == 'OnePlus8Pro' || model == 'GCE×86phone'){
       return true;
     }
   }
